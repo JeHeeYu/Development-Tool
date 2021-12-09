@@ -77,8 +77,3 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-void MainWindow::clickFunc()
-{
-    qDebug("QCommandLinkButton Click");
-}
