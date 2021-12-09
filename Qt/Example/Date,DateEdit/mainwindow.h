@@ -23,10 +23,6 @@ private:
 
     QDateEdit *dateEdit[4];
     QLabel *lb[6];
-
-private slots:
-    void clickFunc();
-
 };
 
 #endif // MAINWINDOW_H
