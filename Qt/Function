@@ -1,9 +1,12 @@
-Name              Arguments             Return               Description
-qAbs              qAbs(n)               절대값               절대값 반환
-qBound            qBound(n, n, n)       사이값               최대값과 최소값의 사이 값 반환
-qFatal            qFatal("str")         오류 메시지          오류 메시지 핸들링 함수
-qFuzzyCompare     qFuzzyCompare(n, n)   bool type            소수점 비교 함수로 비교 후 true or false 반환
-qMax              qMax(n, n)            최대값               최대값 반환
-qMin              qMin(n, n)            최소값               최소값 반환
-qRound            qRound(n)             반올림 값            소수점 반올림 후 값 반환
+Name              Class               Arguments             Return               Description
+qAbs                                  qAbs(n)               절대값               절대값 반환
+qBound                                qBound(n, n, n)       사이값               최대값과 최소값의 사이 값 반환
+qFatal                                qFatal(string)         오류 메시지          오류 메시지 핸들링 함수
+qFuzzyCompare                         qFuzzyCompare(n, n)   bool type            소수점 비교 함수로 비교 후 true or false 반환
+qMax                                  qMax(n, n)            최대값               최대값 반환
+qMin                                  qMin(n, n)            최소값               최소값 반환
+qRound                                qRound(n)             반올림 값            소수점 반올림 후 값 반환
 
+append()          QByteArray          append(string)        객체 뒤에 문자열 이어붙이기
+prepend()         QByteArray          prepend(string)       객체 앞에 문자열 이어붙이기
+replace
