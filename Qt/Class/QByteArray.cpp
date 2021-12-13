@@ -5,6 +5,13 @@
 #include <QByteArray>
 QT += core
 
+/*      Constructor     */
+QByteArray(QByteArray &&other);
+QByteArray(const QByteArray &other);
+QByteArray(int size, char ch);
+QByteArray(const char *data, int size == -1);
+QByteArray();
+
 /*      Method     */
 QByteArray.append() : 배열의 뒤에 데이터를 이어 붙이기 위한 함수
 
