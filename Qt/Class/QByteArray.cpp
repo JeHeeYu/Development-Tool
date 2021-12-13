@@ -6,7 +6,6 @@
 QT += core
 
 /*      Method     */
-
 QByteArray.append() : 배열의 뒤에 데이터를 이어 붙이기 위한 함수
 
 // Overloading
