@@ -1,0 +1,13 @@
+Type            Size          Description<
+bool            8bit          true / false
+qint8           8bit          signed char
+qint16          16bit         signed short
+qint32          32bit         signed int
+qint64          64bit         long long int
+quint8          8bit          unsiged char
+quint16         16bit         unsigned short
+quint32         32bit         unsigned int
+quint64         64bit         unsigned long long int
+float           32bit         float
+double          64bit         double
+const char*     32bit         constant
