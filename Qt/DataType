@@ -11,3 +11,17 @@ quint64         64bit         unsigned long long int
 float           32bit         float
 double          64bit         double
 const char*     32bit         constant
+
+/*      String Type Class       */
+QString                 UNICODE  문자열 지원
+QStringList             문자열 리스트 집합
+QStringMatcher          문자열 상에 매칭되는 문자열 검색
+QStringRef              size(), position, toString()과 같은 서브 String 래핑
+QByteArray              Byte 단위 배열 지원
+QByteArrayMatcher       QByteArray로 구현된 바이트 단위의 배열 index를 이용한 매칭 문자열 찾는
+QChar                   16bit 유니코드 Character 지원
+QLatin1Char             US-ASCII/Latin-1 인코딩 문자 지원
+QLatin1String           US-ASCII/Latin-1 인코딩 문자열 지원
+QLocale                 숫자 혹은 문자 표시 방식에 맞는 다양한 언어의 표현 방식에 맞는 변환
+QTextStream             Text 기반 Write/Read를 위한 Stream 기능 제공
+QDataStream             Binary 기반 Write/Read를 위한 Stream 기능 제공
