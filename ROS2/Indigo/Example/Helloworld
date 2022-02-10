@@ -1,0 +1,8 @@
+/*    1 Terminal    */
+roscore
+
+/*    2 Terminal    */
+rosrun rospy_tutorials tlaker
+
+/*    3 Terminal    */
+rosrun rospy_tutorials listener
