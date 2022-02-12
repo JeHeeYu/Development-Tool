@@ -47,7 +47,7 @@ def do_timer(goal):
 	# 성공적으로 일시 정지했다는 것을 클라이언트에게 전송
 	result = TimerResult()
 	result.time_elapsed = rospy.Duration.from_sec(time.time() - start_time)
-	result.updates_send = update_count
+	result.updates_sent = update_count
 	server.set_succeeded(result, "Timer completed successfully")
 
 # 노드 초기화 후 액션 서버르 생성하고 목표 대기
