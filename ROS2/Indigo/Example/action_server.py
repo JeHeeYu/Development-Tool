@@ -4,6 +4,8 @@
 import rospy
 import actionlib
 
+import time
+
 # ros 자료형 import
 from basics.msg import TimerAction, TimerGoal, TimerResult, TimerFeedback
 
@@ -34,7 +36,7 @@ def do_timer(goal):
 			return
 
 		# TimerFeedBack 자료형을 사용하여 피드백을 보냄
-		feedback = TimerFeedBack()
+		feedback = TimerFeedback()
 		feedback.time_elapsed = rospy.Duration.from_sec(time.time() - start_time)
 		feedback.time_remaining = goal.time_to_wait - feedback.time_elapsed
 		server.publish_feedback(feedback)
