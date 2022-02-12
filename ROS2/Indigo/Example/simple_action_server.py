@@ -28,6 +28,14 @@ def do_timer(goal):
   server.set_succeeded(result)
   
 rospy.init_node('timer_action_server')
+
+# SimpleActionServer 생성
+# 첫 번째 인자 timer : 토픽이 광고될 이름공간을 결정하는 서버의 이름
+# 두 번째 인자 TimerAAction : 서버가 처리하는 액션의 자료형
+# 세 번째 인자 do_timer : 목표 콜백이며, 위에 정의한 do_timer() 함수
+# 네 번째 인자 False : 서버의 자동 시작 여부
 server = actionlib.SimpleActionServer('timer', TimerAction, do_timer, False)
+
+# 액션 서버를 생성 후 명시적으로 시작하는 함수
 server.start()
 rospy.spin()
