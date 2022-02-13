@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-image_path = 'image/test.jpg'
+image_path = 'image/input_image.jpg'
 
 def image_read():
     # imread 함수는 입력 영상을 불러오는 함수로, Mat 행렬 형식으로 불러옴
@@ -103,7 +103,7 @@ line_image = hough_line(roi_detection_image, 2, np.pi/180, 90, 120, 150)
 
 result_image = cv2.addWeighted(copy_image, 0.001, line_image, 0.8, 0.1, dtype=cv2.CV_32F)
 
-#image_show('dst', roi_detection_image)
-#image_show('dst2', line_image)
-image_show('dst3', result_image)
+#image_show('roi_detection_image', roi_detection_image)
+image_show('line_image', line_image)
+#image_show('dst3', result_image)
 
