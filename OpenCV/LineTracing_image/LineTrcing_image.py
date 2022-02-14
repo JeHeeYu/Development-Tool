@@ -34,20 +34,16 @@ def gaussian_blur(image, kerner_size):
     return cv2.GaussianBlur(image, (kerner_size, kerner_size), 0)
 
 def canny_edge_detection(image):
+    # 입력 영상을 그레이스케일 영상으로 변환
     input_image = grayscale_converter(image)
+    
+    # 그레이스케일로 변환된 영상에 가우시안 필터링 추가
     image_blur = cv2.GaussianBlur(input_image, (5, 5), 0)
+    
+    # cv2.Canny 함수는 캐니 에지 검출을 적용할 수 있는 함수
+    # cv2.Canny 함수는 넓은 범위의 에지를 검출하는데 널리 사용되는 함수
     canny_image = cv2.Canny(image_blur, 50, 150)
     return canny_image
-
-def line_detection(image, lines):
-    # lines_image 변수에 image 갯수의 배열 생성
-    lines_image = np.zeros_like(image)
-    if lines is not None :
-        for i in range(len(lines)):
-            for x1,y1,x2,y2 in lines[i]:
-                cv2.line(lines_image,(x1,y1),(x2,y2),(255,0,0), 10 )
-    return lines_image
-
 
 def roi_detection(image):
     # np.zero_like 함수는 매개변수로 받은 크기의 배열을 배열을 생성하며, 0으로 초기화 되어 있음
@@ -71,22 +67,28 @@ def roi_detection(image):
     # 이 함수는 차선 내부만 ROI로 설정하는 의미
     cv2.fillPoly(image_mask, points, 255)
     
-    # return image_mask
-    
+    # cv2.bitwise_xxx 함수는 비트 연산을 하는 함수로, _and는 and 연산을 위한 함수
+    # 영상은 각 행렬 구조로, 각 픽셀마다 고유 값이 있어 비트 연산을 통해 영상의 질을 바꿀 수 있음
     line_image = cv2.bitwise_and(image, image_mask)
     return line_image
 
+    # 선을 그리는 함수로, 인자의 color 값으로 선의 색을 조정, thickness로 선 두께 조정
 def draw_line(image, lines, color=[255, 0, 0], thickness=10):
     for i in lines:
         for x1, y1, x2, y2 in i:
+            # cv2.line 함수는 선을 그릴 수 있는 함수
             cv2.line(image, (x1, y1), (x2, y2), color, thickness)
 
 def hough_line(image, rho, theta, threshold, min_line_length, max_line_gap):
+    # cv2.HoughLinesP 함수는 허프 라인 변환을 할 수 있는 함수
+    # 허프 라인 변환이란 라인, 원, 사각형 등 어떠한 특징을 추출하는 것을 말함
     line = cv2.HoughLinesP(image, rho, theta, threshold, minLineLength = min_line_length, maxLineGap = max_line_gap)
     
+    # 영상의 y, x 축 대입
     image_height = image.shape[0]
     image_width = image.shape[1]
     
+    # 입력 영상을 배열로 초기화 후, 검출 위치에 선을 그림
     line_image = np.zeros((image_height, image_width, 3))
     draw_line(line_image, line)
     
@@ -101,6 +103,13 @@ roi_detection_image = roi_detection(canny_edge_image)
 
 line_image = hough_line(roi_detection_image, 2, np.pi/180, 90, 120, 150)
 
+# cv2.addWeighted 함수는 영상 간의 연산 관련 함수
+# 첫 번째 인자 : 첫 번째 입력 영상
+# 두 번째 인자 : 첫 번째 입력 영상의 비율
+# 세 번째 인자 : 두 번째 입력 영상
+# 네 번째 인자 : 두 번째 입력 영상의 비율
+# 다섯 번째 인자 : 가중치
+# 여섯 번째 인자 : 입력 영상 타입 지정
 result_image = cv2.addWeighted(copy_image, 0.001, line_image, 0.8, 0.1, dtype=cv2.CV_32F)
 
 #image_show('roi_detection_image', roi_detection_image)
