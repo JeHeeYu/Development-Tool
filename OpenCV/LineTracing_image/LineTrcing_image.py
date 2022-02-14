@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 
+# 입력 영상 이미지 경로 해당 소스 파일이 있는 기준
 image_path = 'image/input_image.jpg'
 
 def image_read():
