@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+  integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/css.css')}}">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script type="text/javascript" src="../static/javascript/js.js"></script>
+
+
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  <title>Document</title>
+</head>
+<body>
+  <div id='box' class="box">
+		<div id='timerBox' class="timerBox">
+			<div id="time" class="time">00:00:00</div>
+		</div>
+		<div class="btnBox">
+			<i id="startbtn" class="fa fa-play" aria-hidden="true"></i>
+			<i id="pausebtn" class="fa fa-pause" aria-hidden="true"></i>
+			<i id="stopbtn" class="fa fa-stop" aria-hidden="true"></i>
+		</div>
+	</div>
+
+  <form action ="http://localhost:5000" method = "POST">
+    <p><input type="submit" value="zasdasdasdz" /></p>
+  </form>
+
+  <h1>Jehee Straeming</h1>
+  <div class="container">
+    <div class="row">
+      <div class="mainDiv">
+        <img id="status" onclick="changeimage()" src="{{ url_for('video_feed') }}" width="100%">
+        <div>
+          <button type="button"><img id="stopButton" class="button" onclick="changeimage()"src="../static/images/stop_button.png" alt=""></button>
+          <button type="button"><img id="startButton" class="button" onclick="changeimage2()" src="../static/images/jehee2.JPG" alt=""></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<input type="text" id="txt1" name="inputdata"></input>
+<button id="btn1">submit</button>
+
+<div id="result1">
+</div>
+
+</p>
+  <script>
+    $( "#btn1" ).click(function() {
+      var txt1_v = $('#txt1').val();
+      var postdata = {
+        'inputdata':txt1_v
+      }
+      alert( "Handler for .click() called." );
+      $.ajax({
+        type: 'POST',
+        url: '{{url_for("ajax_page")}}',
+        data: JSON.stringify(postdata),
+        dataType : 'JSON',
+        contentType: "application/json",
+        success: function(data){
+          $("#result1").text("result:"+data['inputdata'] + '=' + data['rlt']);
+          alert('success :' + data['inputdata'] + '=' + data['rlt'])
+        },
+        error: function(request, status, error){
+          alert('ajax error:['+status+']['+error+']')
+        }
+      })
+    });
+    
+    </script>
+
+
+
+
+</body>
+</html>
